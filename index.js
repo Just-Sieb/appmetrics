@@ -147,7 +147,7 @@ if (global.Appmetrics) {
 
   /* eslint no-proto:0 */
   aspect.after(module.__proto__, 'require', data, function(obj, methodName, args, context, ret) {
-    if (ret == null || ret.__ddProbeAttached__) {
+    if (ret == null || ret.hasOwnProperty('__ddProbeAttached__')) {
       return ret;
     } else {
       for (var i = 0; i < probes.length; i++) {
